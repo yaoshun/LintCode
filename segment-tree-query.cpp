@@ -33,9 +33,15 @@ public:
         
         // By definition, the left side of segment tree is leftWall
         // in the following format.
-        int leftWall = root->start + (root->end - root->start)/2;
-        int leftMax = query(root->left, start, min(end, leftWall));
-        int rightMax = query(root->right, max(leftWall + 1, start), end);
+        int mid = root->start + (root->end - root->start)/2;
+
+        // Notice and learn the min max trick.
+        // Why is that? for the left tree, we can use 
+        // query(root->left, start, end) to also get the right results.
+        // Because the above condition is covering boundary check.
+        // However, min(end, mid) can help to reduce the time a little bit.
+        int leftMax = query(root->left, start, min(end, mid));
+        int rightMax = query(root->right, max(mid + 1, start), end);
         return max(leftMax, rightMax);
     }
 };
