@@ -63,6 +63,7 @@ public:
 // We can further reduce the time to O(n^2) through further optimization.
 // Use an additional variable to track the optimal condition for dp[i][j] solution.
 // To lower down the search space, we utilized the monoticity property of the problem.
+// This solution only take O(n^2) time and O(n^2) space.
 class Solution {
 public:
     /**
