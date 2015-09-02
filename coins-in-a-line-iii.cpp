@@ -25,6 +25,9 @@ public:
             
         // We gradually increase the distance between i and j to achieve
         // the solvation of dp[0][n - 1].
+        // dp[i][j] = max(values[i] + min(dp[i + 2][j], dp[i + 1][j - 1]),
+        //                values[j] + min(dp[i][j - 2], dp[i + 1][j - 1])).
+        // Becareful of the boundary check.
         for (int gap = 1; gap <= n - 1; gap++) {
             for (int i = 0; i + gap <= n - 1; i++) {
                 // Calculate dp[i][i + gap] in this case.
@@ -62,6 +65,8 @@ bool firstWinEvenCoins(const vector<int>& values) {
             odd_sum += values[i];
     }
     
-    // If it is equal, we are still not sure who will win.
+    // If it is equal, we are still not sure who will win,
+    // Then we should still go through the above method to check who will win.
+    // This is actually a bypassing function that can be used.
     return odd_sum != even_sum;
 }
