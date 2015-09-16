@@ -50,7 +50,7 @@ public:
         for (int i = 0; i < n; i++) {
             if (i > largest) {
                 return false;
-            } else if (A[i] + i >= largest) {
+            } else if (A[i] + i > largest) {
                 largest = A[i] + i;
             }
         }
